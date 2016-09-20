@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+  head
+    title Jade
+    script(type='text/javascript').
+      foo = true;
+      bar = function () {};
+      if (foo) {
+      bar(1 + 5)
+      }
+  body
+    h1 Jade - node template engine
+    #container.col
+    :html
+      <p><!--
+              --><a href="#">Link</a><!--
+          --><span>Text</span><!--
+      --></p>
