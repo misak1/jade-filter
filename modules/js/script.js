@@ -119,6 +119,34 @@ $(function () {
     })
         //   margin-right: 45px;
     });
+
+    $('.js-tab').each(function () {
+        var $tabs = $(this).find('.btn');
+        // console.log('tabs:'+ $tabs.length);
+        // console.log($tabs);
+        var swichContent = function(){
+            var i = 0;
+            $.each($tabs, function(){
+                var el = $(this).parent().find('.c-tab-content').get(i);
+                if($(this).hasClass('is-current')){
+                    $(el).show();
+                }else{
+                    $(el).hide();
+                }
+                i++; 
+            });
+        };
+        $tabs.on('click', function(e){
+            e.preventDefault();
+            var $tabs = $(this).parent().children('.btn');
+            $.each($tabs, function(){
+                 $(this).removeClass('is-current');
+            });
+            $(this).addClass('is-current');
+            swichContent();
+        });
+        swichContent();
+    });
 });
 
 

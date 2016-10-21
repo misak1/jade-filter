@@ -56,27 +56,69 @@ html(lang='en')
 
     h3 ボタン(テーマカラー1)
     .m-module-code
-      a.btn(href="#").theme1: span 新規登録
+      div
+        a.btn(href="#").theme1: span 新規登録1
+        a.btn(href="#").theme1: span 新規登録2
+        a.btn(href="#").theme1: span 新規登録3
+      .u-center
+        a.btn(href="#").theme1: span 新規登録1
+        a.btn(href="#").theme1: span 新規登録2
+        a.btn(href="#").theme1: span 新規登録3
+      .u-rtl
+        a.btn(href="#").theme1: span 新規登録1
+        a.btn(href="#").theme1: span 新規登録2
+        a.btn(href="#").theme1: span 新規登録3
 
     h3 タブ
     .m-module-code
-      .c-tab
+      .c-tab.js-tab
         a.btn.is-current(href="#"): span ファイルリスト登録
         a.btn(href="#"): span データを確認
         .c-tab-border
-        .c-tab-content1
-          p ファイルリスト登録
-        .c-tab-conten
-          p データを確認
+        .c-tab-contents
+          .c-tab-content
+            p ファイルリスト登録
+          .c-tab-content
+            p データを確認
+    .m-module-code-js
+        textarea.jsCode
+          :html
+            $('.js-tab').each(function () {
+                var $tabs = $(this).find('.btn');
+                // console.log('tabs:'+ $tabs.length);
+                // console.log($tabs);
+                var swichContent = function(){
+                    var i = 0;
+                    $.each($tabs, function(){
+                        var el = $(this).parent().find('.c-tab-content').get(i);
+                        if($(this).hasClass('is-current')){
+                            $(el).show();
+                        }else{
+                            $(el).hide();
+                        }
+                        i++; 
+                    });
+                };
+                $tabs.on('click', function(e){
+                    e.preventDefault();
+                    var $tabs = $(this).parent().children('.btn');
+                    $.each($tabs, function(){
+                        $(this).removeClass('is-current');
+                    });
+                    $(this).addClass('is-current');
+                    swichContent();
+                });
+                swichContent();
+            });
 
 
-    h1 Jade - node template engine
-    #container.col
-    :html
-      <p><!--
-              --><a href="#">Link</a><!--
-          --><span>Text</span><!--
-      --></p>
+    //- h1 Jade - node template engine
+    //- #container.col
+    //- :html
+    //-   <p><!--
+    //-           --><a href="#">Link</a><!--
+    //-       --><span>Text</span><!--
+    //-   --></p>
 
     :html
       <script src="//code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
