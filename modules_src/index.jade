@@ -1,0 +1,86 @@
+doctype html
+html(lang='en')
+  head
+    title Jade
+    :html
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+    script(type='text/javascript').
+      foo = true;
+      bar = function () {};
+      if (foo) {
+      bar(1 + 5)
+      }
+  body
+    h3 モジュール例
+    .m-module-code
+      .c-box
+        ul.m-pointlist
+          li 1st
+          li 2nd
+          li 3rd
+
+    h3 Heading2
+    .m-module-code
+      .heading-2 通常設定
+
+    h3 Heading3
+    .m-module-code
+      //- .heading-3 Asazukeの設定
+      .heading-3 プロジェクトの設定
+
+    h3 メニュー
+    .m-module-code
+      :html
+        <nav id="navigation">
+          <ul>
+            <li class="current-item">
+              <a href="#">通常設定</a>
+            </li>
+            <li>
+              <a href="#">処理／実行</a>
+            </li>
+            <li>
+              <a href="#">開発</a>
+            </li>
+            <li>
+              <a href="#">サポート</a>
+            </li>
+          </ul>
+          <span id="slide-line"></span>
+        </nav>
+        
+    h3 ボタン(標準)
+    .m-module-code
+      a.btn(href="#"): span 初回セットアップ
+      a.btn(href="#"): span バージョンアップデート
+
+    h3 ボタン(テーマカラー1)
+    .m-module-code
+      a.btn(href="#").theme1: span 新規登録
+
+    h3 タブ
+    .m-module-code
+      .c-tab
+        a.btn.is-current(href="#"): span ファイルリスト登録
+        a.btn(href="#"): span データを確認
+        .c-tab-border
+        .c-tab-content1
+          p ファイルリスト登録
+        .c-tab-conten
+          p データを確認
+
+
+    h1 Jade - node template engine
+    #container.col
+    :html
+      <p><!--
+              --><a href="#">Link</a><!--
+          --><span>Text</span><!--
+      --></p>
+
+    :html
+      <script src="//code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+      <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+      <script src="/js/he.js"></script>
+      <script src="/js/html2jade.js"></script>
+      <script src="/js/script.js"></script>

@@ -1,0 +1,159 @@
+/* module list css */
+body{
+    width:1000px;
+}
+.m-module-code {
+    padding: 30px 0;
+}
+.m-module-block textarea{
+    width:45%;
+    height:100px;
+}
+.htmlCode{
+    background-image: url(../img/bg-html.png);
+    background-repeat: no-repeat;
+    background-position: top 5px right 5px;
+    background-size: 30px auto;
+}
+.jadeCode{
+    background-image: url(../img/bg-pug.png);
+    background-repeat: no-repeat;
+    background-position: top 5px right 5px;
+    background-size: 30px auto;
+}
+/* /module list css */
+
+
+*{
+    color: #333333;
+}
+
+/* button */
+a.btn{
+    text-decoration: none;
+}
+.btn{
+    display:table-cell;
+    cursor: pointer;
+    box-shadow: 0px 2px 0px 0px rgba(224,224,224,0.9);
+    border-radius:3px;
+    margin-bottom:7px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.88, rgba(0,0,0, 0.08)), color-stop(0.00, #fff));
+    background: -webkit-linear-gradient(top, #fff 0%, rgba(0,0,0, 0.08) 88%);
+    background: -moz-linear-gradient(top, #fff 0%, rgba(0,0,0, 0.08) 88%);
+    background: -o-linear-gradient(top, #fff 0%, rgba(0,0,0, 0.08) 88%);
+    background: -ms-linear-gradient(top, #fff 0%, rgba(0,0,0, 0.08) 88%);
+    background: linear-gradient(to bottom, #fff 0%, rgba(0,0,0, 0.08) 88%);
+    border:1px solid #a8a8a8;
+    box-sizing: border-box;
+    width:200px;
+    height:40px;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn:hover{
+    -webkit-filter: brightness(1.1);
+    -moz-filter: brightness(1.1);
+    -o-filter: brightness(1.1);
+    -ms-filter: brightness(1.1);
+    filter: brightness(1.1);
+}
+.btn span{
+    color:#000;
+}
+.btn.theme1{
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #879521), color-stop(0.00, #a0ac29));
+    background: -webkit-linear-gradient(#a0ac29, #879521);
+    background: -moz-linear-gradient(#a0ac29, #879521);
+    background: -o-linear-gradient(#a0ac29, #879521);
+    background: -ms-linear-gradient(#a0ac29, #879521);
+    background: linear-gradient(#a0ac29, #879521);
+    border:none;
+    
+}
+.btn.theme1 span{
+    color:#fff;
+}
+/* /button */
+
+/* navi */
+#navigation {
+  position: relative;
+  /*background-color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.26);*/
+}
+#navigation ul li {
+  display: inline-block;
+}
+#navigation ul li a {
+  display: inline-block;
+  margin:0;
+  font-size: 16px;
+  text-decoration: none;
+}
+#navigation ul li.current-item a {
+  color: #999999;
+}
+#navigation #slide-line {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #000;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+/* /navi */
+
+
+
+/* heading */
+.heading-2{
+  color:#808080;
+  font-size:24px;
+}
+/* /heading */
+.heading-3{
+  color:#1a1a1a;
+  font-size:20px;
+  line-height: 35px;
+  font-weight:bold;
+  border-bottom: 2px solid #cccccc;
+}
+
+
+/* c-box */
+.c-box{
+    padding:25px;
+    border: 1px solid #dbdbdb;
+}
+/* /c-box */
+
+
+/* c-tab */
+.c-tab a.btn.is-current{
+    
+    /* extend theme1 */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #879521), color-stop(0.00, #a0ac29));
+    background: -webkit-linear-gradient(#a0ac29, #879521);
+    background: -moz-linear-gradient(#a0ac29, #879521);
+    background: -o-linear-gradient(#a0ac29, #879521);
+    background: -ms-linear-gradient(#a0ac29, #879521);
+    background: linear-gradient(#a0ac29, #879521);
+    border:none;
+}
+.c-tab a.btn.is-current span{
+    color: #fff;
+}
+.c-tab a.btn{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow:none;
+    margin-left:10px;
+}
+.c-tab a.btn:first-child{
+    margin-left:0;
+}
+.c-tab-border{
+    border: 2px solid #7f8b2c;
+}
+/* /c-tab */
