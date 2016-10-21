@@ -11,7 +11,8 @@ html(lang='en')
       bar(1 + 5)
       }
   body
-    h3 モジュール例
+  
+    h3 モジュールサンプル
     .m-module-code
       .c-box
         ul.m-pointlist
@@ -25,8 +26,7 @@ html(lang='en')
 
     h3 Heading3
     .m-module-code
-      //- .heading-3 Asazukeの設定
-      .heading-3 プロジェクトの設定
+      .heading-3 設定
 
     h3 メニュー
     .m-module-code
@@ -34,16 +34,16 @@ html(lang='en')
         <nav id="navigation">
           <ul>
             <li class="current-item">
-              <a href="#">通常設定</a>
+              <a href="#">ファイル</a>
             </li>
             <li>
-              <a href="#">処理／実行</a>
+              <a href="#">編集</a>
             </li>
             <li>
               <a href="#">開発</a>
             </li>
             <li>
-              <a href="#">サポート</a>
+              <a href="#">ヘルプ</a>
             </li>
           </ul>
           <span id="slide-line"></span>
@@ -51,7 +51,7 @@ html(lang='en')
         
     h3 ボタン(標準)
     .m-module-code
-      a.btn(href="#"): span 初回セットアップ
+      a.btn(href="#"): span インストール
       a.btn(href="#"): span バージョンアップデート
 
     h3 ボタン(テーマカラー1)
@@ -72,14 +72,14 @@ html(lang='en')
     h3 タブ
     .m-module-code
       .c-tab.js-tab
-        a.btn.is-current(href="#"): span ファイルリスト登録
-        a.btn(href="#"): span データを確認
+        a.btn.is-current(href="#"): span 登録
+        a.btn(href="#"): span 確認
         .c-tab-border
         .c-tab-contents
           .c-tab-content
-            p ファイルリスト登録
+            p 登録
           .c-tab-content
-            p データを確認
+            p 確認
     .m-module-code-js
         textarea.jsCode
           :html
