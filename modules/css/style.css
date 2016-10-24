@@ -18,6 +18,7 @@ body{
     height:100px;
     box-sizing: border-box;
 }
+.m-module-code-css .cssCode,
 .m-module-code-js .jsCode{
     width:90%;
     height:100px;
@@ -35,11 +36,53 @@ body{
     background-position: top 5px right 5px;
     background-size: 30px auto;
 }
+.cssCode{
+    background-image: url(../img/bg-css.png);
+    background-repeat: no-repeat;
+    background-position: top 5px right 5px;
+    background-size: 30px auto;
+}
 .jsCode{
     background-image: url(../img/bg-js.png);
     background-repeat: no-repeat;
     background-position: top 5px right 5px;
     background-size: 30px auto;
+}
+#module_indexes{
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #879521), color-stop(0.00, #a0ac29));
+    background: -webkit-linear-gradient(#a0ac29, #879521);
+    background: -moz-linear-gradient(#a0ac29, #879521);
+    background: -o-linear-gradient(#a0ac29, #879521);
+    background: -ms-linear-gradient(#a0ac29, #879521);
+    background: linear-gradient(#a0ac29, #879521);
+    padding:10px 0 20px 10px;
+    margin-bottom: 20px; 
+}
+
+#module_indexes ul,
+#module_indexes li{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#module_indexes h2,
+#module_indexes li a{
+    color: #fff;
+}
+#module_indexes ul:after{
+  content: "."; 
+  display: block; 
+  height: 0; 
+  font-size:0;	
+  clear: both; 
+  visibility:hidden;
+}
+#module_indexes li{
+    margin-left:10px;
+    float:left;
+}
+#module_indexes li:first-child{
+    margin-left:0;
 }
 /* /module list css */
 
@@ -214,9 +257,12 @@ a.btn{
     display:none;
 }
 /* /c-tab */
+.u-left{
+    text-align:left;
+}
 .u-center{
     text-align:center;
 }
-.u-rtl{
-    direction:rtl;
+.u-right{
+    text-align:right;
 }

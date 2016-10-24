@@ -64,7 +64,7 @@ html(lang='en')
         a.btn(href="#").theme1: span 新規登録1
         a.btn(href="#").theme1: span 新規登録2
         a.btn(href="#").theme1: span 新規登録3
-      .u-rtl
+      .u-right
         a.btn(href="#").theme1: span 新規登録1
         a.btn(href="#").theme1: span 新規登録2
         a.btn(href="#").theme1: span 新規登録3
@@ -80,6 +80,68 @@ html(lang='en')
             p 登録
           .c-tab-content
             p 確認
+
+    .m-module-code-css
+        textarea.cssCode
+          :html
+            .c-tab a.btn.is-current{
+                /* extend theme1 */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #879521), color-stop(0.00, #a0ac29));
+                background: -webkit-linear-gradient(#a0ac29, #879521);
+                background: -moz-linear-gradient(#a0ac29, #879521);
+                background: -o-linear-gradient(#a0ac29, #879521);
+                background: -ms-linear-gradient(#a0ac29, #879521);
+                background: linear-gradient(#a0ac29, #879521);
+                border:none;
+            }
+            .c-tab a.btn.is-current span{
+                color: #fff;
+            }
+            .c-tab a.btn{
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                box-shadow:none;
+                margin: 0 0 0 10px;
+            }
+            .c-tab a.btn span{
+                position:relative;
+            }
+            .c-tab a.btn span:before{
+                content:".";
+                display:inline-block;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 4px 4px 0 4px;
+                border-color: #000 transparent transparent transparent;
+                line-height: 0px;
+                _border-color: #000 #000000 #000000 #000000;
+                _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+                color:transparent;
+                position: absolute;
+                top: 50%;
+                left: -12px;
+                /*color:#000;*/
+                transform: rotate(-90deg);
+            }
+            .c-tab a.btn.is-current span:before{
+                /*color:#fff;*/
+                border-color: #fff transparent transparent transparent;
+                line-height: 0px;
+                _border-color: #fff #000000 #000000 #000000;
+                _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+                
+                transform: rotate(0deg);
+            }
+            .c-tab a.btn:first-child{
+                margin-left:0;
+            }
+            .c-tab-border{
+                border: 2px solid #7f8b2c;
+            }
+            .c-tab-content{
+                display:none;
+            }
     .m-module-code-js
         textarea.jsCode
           :html
@@ -110,8 +172,6 @@ html(lang='en')
                 });
                 swichContent();
             });
-
-
     //- h1 Jade - node template engine
     //- #container.col
     //- :html
@@ -119,7 +179,6 @@ html(lang='en')
     //-           --><a href="#">Link</a><!--
     //-       --><span>Text</span><!--
     //-   --></p>
-
     :html
       <script src="//code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
       <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
