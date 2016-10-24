@@ -75,8 +75,12 @@ $.resizable = function(resizerID, vOrH) {
             if (vOrH == 'h') {
                 // タテ
                 var newHeight = height + (end - start);
+                console.log(newHeight);
                 if (newHeight > content_margin_side || newHeight < 0) {
                     $content.height(newHeight);
+                    if(newHeight >  $(window).height() - $('#content-header').height() - 20){
+                        console.log("vertical-over");
+                    } 
 
                     $("#content").css({
                         "min-height": newHeight
@@ -88,6 +92,7 @@ $.resizable = function(resizerID, vOrH) {
                         "height": newHeight - divHeight
                     });
                     $("#content-footer").height(winHeight - (headerHeight + newHeight + footer_margin_bottom));
+
                 }
             } else {
                 // ヨコ
@@ -98,12 +103,13 @@ $.resizable = function(resizerID, vOrH) {
                 if (content_margin_side < newLeftWidth && newRightWidth > content_margin_side) {
                     $('#' + resizerID).prev().width(newLeftWidth);
                     $('#' + resizerID).next().width(newRightWidth);
+                }else{
+                    console.log("holizontal-over");
                 }
             }
         });
     });
 }
-
 $.resizable('div_vertical', "v");
 $.resizable('div_right', "h");
 $.resizable('div_left', "h");
