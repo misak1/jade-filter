@@ -43,6 +43,8 @@ html(lang='en')
               .fileTree5
               // その他
             .layer-panel none
+            #btnShowRight
+              a: span.triangle-left
           #div_left.handler_horizontal
         #div_vertical.handler_vertical
         fieldset#RightPanel
@@ -59,7 +61,11 @@ html(lang='en')
               // h3 データベース
             .layer-panel
               // h3 その他
+            #btnShowLeft
+              a: span.triangle-right
           #div_right.handler_horizontal
+        #btnShowFooter
+          a: span.triangle-top
       #content-footer
         .consolePanelMenu
           .btn-group-sm.console-btn-group(role='group', aria-label='...')
@@ -70,4 +76,67 @@ html(lang='en')
       <script src="//code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
       <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
       <script src="./resources/js/window/layout.js"></script>
+      <style>
+      #btnShowFooter{
+          display:inline-block;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          display: none;
+          width: 50px;
+          height: 22px;
+          background: #333;
+          border-radius: 3px 3px 0 0;
+          margin-left: -25px;
+          text-align: center;
+      }
+      #btnShowLeft{
+          display:inline-block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          //- display: none;
+          width: 22px;
+          height: 50px;
+          background: #333;
+          border-radius: 0 3px 3px 0;
+          //- margin-left: -25px;
+          text-align: center;
+      }
+      #btnShowRight{
+          display:inline-block;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          //- display: none;
+          width: 22px;
+          height: 50px;
+          background: #333;
+          border-radius: 3px 0 0 3px;
+          //- margin-left: -25px;
+          text-align: center;
+      }
+      #btnShowFooter a{
+        color: #fff;
+        display:block;
+        margin-top: -8px;
+        cursor:pointer;
+      }
+      #btnShowLeft a{
+        color: #fff;
+        display:block;
+        cursor:pointer;
+        height: 100%;
+      }
+      #btnShowRight a{
+        color: #fff;
+        display:block;
+        cursor:pointer;
+        height: 100%;
+      }
+      #btnShowLeft .triangle-right,
+      #btnShowRight .triangle-left{
+        margin-top: 19px;
+      }
+      </style>
   

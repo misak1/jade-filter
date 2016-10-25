@@ -57,6 +57,28 @@ var resize = function() {
 
     $("#content-footer").height(winHeight - (headerHeight + panelHeight + footer_margin_bottom));
 }
+$('#btnShowFooter a').on('click',function(){
+    footerLayout(true);
+    setTimeout(function(){
+    window.resize();
+    }, 300);
+});
+
+var footerLayout = function(bool){
+    setTimeout(function(bool){
+        if(!bool){
+            $("#content-footer").hide();
+            $("#content").css({minHeight: '', height:'100%'});
+            $("#LeftPanel, #RightPanel").css({height:'100%'});
+            $('#btnShowFooter').css({display:'inline-block'});
+        }else{
+            $("#content-footer").show();
+            $("#content").css({minHeight: '80%', height:'80%'});
+            $("#LeftPanel, #RightPanel").css({height:'80%'});
+            $('#btnShowFooter').hide();
+        }
+    }, 300, bool);
+}
 
 $.resizable = function(resizerID, vOrH) {
     $('#' + resizerID).bind("mousedown", function(e) {
@@ -78,8 +100,10 @@ $.resizable = function(resizerID, vOrH) {
                 console.log(newHeight);
                 if (newHeight > content_margin_side || newHeight < 0) {
                     $content.height(newHeight);
-                    if(newHeight >  $(window).height() - $('#content-header').height() - 20){
+                    if(newHeight >  $(window).height() - $('#content-header').height() - 40){
                         console.log("vertical-over");
+                        e.preventDefault(); // drag キャンセル
+                        footerLayout(false);
                     } 
 
                     $("#content").css({
