@@ -1,7 +1,6 @@
 /**
  * FileZilla風レイアウト
  */
-// var skipW = false; // 縦リサイズスキップ
 $(function () {
     window.onresize = resize;
     resize();
@@ -25,7 +24,7 @@ var floatFormat = function (number, n) {
 var resize = function (isVertical) {
     var isVertical = isVertical || false;
     if ($content.hasClass('is-Single')) {
-        console.log('not resize');
+        // console.log('not resize');
         return true;
     }
     winHeight = (window.innerHeight || (window.document.documentElement.clientHeight || window.document.body.clientHeight));
@@ -47,11 +46,11 @@ var resize = function (isVertical) {
     // var content_width = $("#content").width();
     var content_width = $("body").width(); // DebToolの表示時に正しい値が取れない為
     var RightPanelWidth = content_width - $("#LeftPanel").width() - $("#div_vertical").width() - border_width_x4;
-    if(isVertical){
+    if (isVertical) {
         $("#RightPanel").css({
             "height": panelHeight - divHeight,
         });
-    }else{
+    } else {
         $("#RightPanel").css({
             "height": panelHeight - divHeight,
             "width": RightPanelWidth
@@ -90,11 +89,13 @@ var leftPanelShow = function (isShow) {
             $("#div_vertical, #RightPanel").hide();
             $("#LeftPanel").css({ width: '100%' });
             $('#btnShowRight').css({ display: 'inline-block' });
+            $('html').addClass('hideRight');
         } else {
             $("#LeftPanel").css({ width: '80%' });
             $("#RightPanel").css({ width: '20%' });
             $("#div_vertical, #RightPanel").show();
             $('#btnShowRight').hide();
+            $('html').removeClass('hideRight');
             // window.resize();
         }
     }, 300, isShow);
@@ -105,11 +106,13 @@ var rightPanelShow = function (isShow) {
             $("#div_vertical, #LeftPanel").hide();
             $("#RightPanel").css({ width: '100%' });
             $('#btnShowLeft').css({ display: 'inline-block' });
+            $('html').addClass('hideLeft');
         } else {
             $("#RightPanel").css({ width: '80%' });
             $("#LeftPanel").css({ width: '20%' });
             $("#div_vertical, #LeftPanel").show();
             $('#btnShowLeft').hide();
+            $('html').removeClass('hideLeft');
             // window.resize();
         }
     }, 300, isShow);
@@ -122,11 +125,13 @@ var footerShow = function (isShow) {
             $("#content").css({ minHeight: '', height: '100%' });
             $("#LeftPanel, #RightPanel").css({ height: '100%' });
             $('#btnShowFooter').css({ display: 'inline-block' });
+            $('html').addClass('hideFooter');
         } else {
             $("#content-footer").show();
             $("#content").css({ minHeight: '80%', height: '80%' });
             $("#LeftPanel, #RightPanel").css({ height: '80%' });
             $('#btnShowFooter').hide();
+            $('html').removeClass('hideFooter');
         }
     }, 300, isShow);
 }
@@ -144,7 +149,7 @@ $.resizable = function (resizerID, vOrH) {
             if (vOrH == 'h') {
                 // タテ
                 var newHeight = height + (end - start);
-                console.log(newHeight);
+                // console.log(newHeight);
                 if (newHeight > content_margin_side || newHeight < 0) {
                     $content.height(newHeight);
                     // if (newHeight > $(window).height() - $('#content-header').height() - 40) {
@@ -170,7 +175,7 @@ $.resizable = function (resizerID, vOrH) {
                 var newLeftWidth = leftwidth + (end - start);
                 var newRightWidth = rightwidth - (end - start);
 
-                console.log(newRightWidth);
+                // console.log(newRightWidth);
                 // 段落ち対策
                 if (content_margin_side < newLeftWidth && newRightWidth > content_margin_side) {
                     $('#' + resizerID).prev().width(newLeftWidth);
@@ -193,34 +198,25 @@ $.resizable = function (resizerID, vOrH) {
             // var leftwidth = $('#' + resizerID).prev().width();
             // var rightwidth = $('#' + resizerID).next().width();
             // var end = vOrH === 'v' ? e.pageX : e.pageY;
-            console.log('mouseup', e.pageX , e.pageY)
+            // console.log('mouseup', e.pageX , e.pageY)
 
             if ($content.height() > $(window).height() - $('#content-header').height() - 40) {
-                console.log("vertical-over");
+                // console.log("vertical-over");
                 e.preventDefault(); // drag キャンセル
                 footerShow(false);
             }
             var newRightWidth = $('#div_right').prev().width();
             var newLeftWidth = $('#div_left').prev().width()
-            // console.log('newLeftWidth',newLeftWidth,"newRightWidth", newRightWidth);
-            // if (content_margin_side < newLeftWidth && newRightWidth > content_margin_side) {
-                // 何もしない
-            // }else{
 
-                e.preventDefault(); // drag キャンセル
-                console.log('newLeftWidth',newLeftWidth,"newRightWidth", newRightWidth, "content_margin_side", content_margin_side);
-                if (newRightWidth <= (content_margin_side + 20)) {
-                    console.log("a");
-                    leftPanelShow(false);
-                }else if (newLeftWidth <= (content_margin_side + 20)) {
-                    console.log("b");
-                    rightPanelShow(false);
-                }
-                console.log("holizontal-over");
-            // }
+            e.preventDefault(); // drag キャンセル
+            // console.log('newLeftWidth',newLeftWidth,"newRightWidth", newRightWidth, "content_margin_side", content_margin_side);
+            if (newRightWidth <= (content_margin_side + 20)) {
+                leftPanelShow(false);
+            } else if (newLeftWidth <= (content_margin_side + 20)) {
+                rightPanelShow(false);
+            }
+            // console.log("holizontal-over");
 
-            // var newHeight = height + (end - start);
-            // if (vOrH == 'h') {
 
             document.removeEventListener("mousemove", mouseMove);
             document.removeEventListener("mouseup", this);
@@ -232,18 +228,3 @@ $.resizable('div_vertical', "v");
 $.resizable('div_right', "h");
 $.resizable('div_left', "h");
 
-
-// var a389 = function(){
-//     console.log("a389");
-//     $("#div_C").load("simple.txt", function (myData, myStatus){
-//         console.log('myData', myData);
-//         console.log('myStatus', myStatus);
-//         //  $("div_C").append("myStatus = " + myStatus);
-//     });
-// };
-// a389();
-
-// // onload
-// window.onresize = resize;
-// resize();
-// global.resize = resize;
