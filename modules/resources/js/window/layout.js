@@ -1,6 +1,7 @@
 /**
  * FileZilla風レイアウト
  */
+// var skipW = false; // 縦リサイズスキップ
 $(function () {
     window.onresize = resize;
     resize();
@@ -21,7 +22,8 @@ var floatFormat = function (number, n) {
     return Math.ceil(number * _pow) / _pow;
 }
 
-var resize = function () {
+var resize = function (isVertical) {
+    var isVertical = isVertical || false;
     if ($content.hasClass('is-Single')) {
         console.log('not resize');
         return true;
@@ -45,22 +47,29 @@ var resize = function () {
     // var content_width = $("#content").width();
     var content_width = $("body").width(); // DebToolの表示時に正しい値が取れない為
     var RightPanelWidth = content_width - $("#LeftPanel").width() - $("#div_vertical").width() - border_width_x4;
-    $("#RightPanel").css({
-        "height": panelHeight - divHeight,
-        "width": RightPanelWidth
-    });
-    // 諄いようだけど
-    var LeftPanelWidth = content_width - $("#RightPanel").width() - $("#div_vertical").width() - border_width_x4;
-    $("#LeftPanel").css({
-        "width": LeftPanelWidth
-    });
-
+    if(isVertical){
+        $("#RightPanel").css({
+            "height": panelHeight - divHeight,
+        });
+    }else{
+        $("#RightPanel").css({
+            "height": panelHeight - divHeight,
+            "width": RightPanelWidth
+        });
+        // 諄いようだけど
+        var LeftPanelWidth = content_width - $("#RightPanel").width() - $("#div_vertical").width() - border_width_x4;
+        $("#LeftPanel").css({
+            "width": LeftPanelWidth
+        });
+    }
     $("#content-footer").height(winHeight - (headerHeight + panelHeight + footer_margin_bottom));
 }
 $('#btnShowFooter a').on('click', function () {
     footerShow(true);
     setTimeout(function () {
-        window.resize();
+        // skipW = true;
+        // window.resize();
+        resize(true);
     }, 300);
 });
 $('#btnShowRight a').on('click', function () {
@@ -138,11 +147,11 @@ $.resizable = function (resizerID, vOrH) {
                 console.log(newHeight);
                 if (newHeight > content_margin_side || newHeight < 0) {
                     $content.height(newHeight);
-                    if (newHeight > $(window).height() - $('#content-header').height() - 40) {
-                        console.log("vertical-over");
-                        e.preventDefault(); // drag キャンセル
-                        footerShow(false);
-                    }
+                    // if (newHeight > $(window).height() - $('#content-header').height() - 40) {
+                    //     console.log("vertical-over");
+                    //     e.preventDefault(); // drag キャンセル
+                    //     footerShow(false);
+                    // }
 
                     $("#content").css({
                         "min-height": newHeight
@@ -161,23 +170,60 @@ $.resizable = function (resizerID, vOrH) {
                 var newLeftWidth = leftwidth + (end - start);
                 var newRightWidth = rightwidth - (end - start);
 
+                console.log(newRightWidth);
                 // 段落ち対策
                 if (content_margin_side < newLeftWidth && newRightWidth > content_margin_side) {
                     $('#' + resizerID).prev().width(newLeftWidth);
                     $('#' + resizerID).next().width(newRightWidth);
                 } else {
-                    if (newRightWidth <= content_margin_side) {
-                        leftPanelShow(false);
-                    } else {
-                        rightPanelShow(false);
-                    }
-                    console.log("holizontal-over");
+                    // e.preventDefault(); // drag キャンセル
+                    // if (newRightWidth <= content_margin_side) {
+                    //     leftPanelShow(false);
+                    // } else {
+                    //     rightPanelShow(false);
+                    // }
+                    // console.log("holizontal-over");
 
                 }
             }
         };
         document.addEventListener('mouseup', function (e) {
+            // var start = vOrH === 'v' ? e.pageX : e.pageY;
+            // var height = $content.height();
+            // var leftwidth = $('#' + resizerID).prev().width();
+            // var rightwidth = $('#' + resizerID).next().width();
+            // var end = vOrH === 'v' ? e.pageX : e.pageY;
+            console.log('mouseup', e.pageX , e.pageY)
+
+            if ($content.height() > $(window).height() - $('#content-header').height() - 40) {
+                console.log("vertical-over");
+                e.preventDefault(); // drag キャンセル
+                footerShow(false);
+            }
+            var newRightWidth = $('#div_right').prev().width();
+            var newLeftWidth = $('#div_left').prev().width()
+            // console.log('newLeftWidth',newLeftWidth,"newRightWidth", newRightWidth);
+            // if (content_margin_side < newLeftWidth && newRightWidth > content_margin_side) {
+                // 何もしない
+            // }else{
+
+                e.preventDefault(); // drag キャンセル
+                console.log('newLeftWidth',newLeftWidth,"newRightWidth", newRightWidth, "content_margin_side", content_margin_side);
+                if (newRightWidth <= (content_margin_side + 20)) {
+                    console.log("a");
+                    leftPanelShow(false);
+                }else if (newLeftWidth <= (content_margin_side + 20)) {
+                    console.log("b");
+                    rightPanelShow(false);
+                }
+                console.log("holizontal-over");
+            // }
+
+            // var newHeight = height + (end - start);
+            // if (vOrH == 'h') {
+
             document.removeEventListener("mousemove", mouseMove);
+            document.removeEventListener("mouseup", this);
         });
         document.addEventListener('mousemove', mouseMove);
     });
