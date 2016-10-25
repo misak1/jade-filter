@@ -3,7 +3,8 @@
  */
 $(function () {
     window.onresize = resize;
-    resize();
+    window.onload = resize;
+    // resize();
 });
 
 var $content = $("#content");
@@ -22,7 +23,12 @@ var floatFormat = function (number, n) {
 }
 
 var resize = function (isVertical) {
-    var isVertical = isVertical || false;
+    var _verticalResize = isVertical || false;
+    if(typeof _verticalResize !== 'boolean'){
+        _verticalResize = false;
+    }
+
+    console.log('resize');
     if ($content.hasClass('is-Single')) {
         // console.log('not resize');
         return true;
@@ -46,11 +52,14 @@ var resize = function (isVertical) {
     // var content_width = $("#content").width();
     var content_width = $("body").width(); // DebToolの表示時に正しい値が取れない為
     var RightPanelWidth = content_width - $("#LeftPanel").width() - $("#div_vertical").width() - border_width_x4;
-    if (isVertical) {
+    console.log('_verticalResize', _verticalResize);
+    if (_verticalResize) {
+        console.log('v1');
         $("#RightPanel").css({
             "height": panelHeight - divHeight,
         });
     } else {
+        console.log('v2');
         $("#RightPanel").css({
             "height": panelHeight - divHeight,
             "width": RightPanelWidth
