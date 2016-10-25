@@ -86,8 +86,8 @@
     <div class="textareamodal">
       <div class="textareamodal-dialog">
         <div class="textareamodal-dialog-inner">
-          <h3>データを確認</h3>
-          <textarea class="textareamodal-dialog-textarea">
+          <h3 class="textareamodal-dialog-title">データを確認</h3>
+          <textarea readonly class="textareamodal-dialog-textarea">
             ダウンロードデータをここに表示します。
             ダウンロードデータをここに表示します。
             ダウンロードデータをここに表示します。
@@ -95,7 +95,7 @@
             ダウンロードデータをここに表示します。
           </textarea><a href="#" class="btn"><span>キャンセル</span></a>
         </div>
-        <div class="textareamodal-dialog-close"><span class="close">閉じる</span></div>
+        <div class="textareamodal-dialog-close"><a>閉じる</a></div>
       </div>
     </div>
 <script src="//code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
@@ -103,14 +103,14 @@
 <script src="./resources/js/window/layout.js"></script>
 <style>
 .textareamodal{
-position: fixed;
-z-index: 1060;
-width:100%;
-height:100%;
-background: rgba(0,0,0, .7);
-top: 0;
-left: 0;
-display: none;
+  position: fixed;
+  z-index: 1060;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0, .7);
+  top: 0;
+  left: 0;
+  display: none;
 }
 .textareamodal-dialog{
   background: rgba(255,255,255, 1);
@@ -128,11 +128,22 @@ display: none;
   width:100%;
   height:310px;
   resize: none;
+  line-height: 1.2;
+  font-size: 12px;
+  padding: 4px;
 }
 .textareamodal-dialog-close{
   position: absolute;
   top: 20px;
   right: 20px;
+}
+.textareamodal-dialog-close a{
+  color:#148fcc;
+}
+.textareamodal-dialog-title{
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 18px;
 }
 </style>
 

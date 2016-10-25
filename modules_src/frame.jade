@@ -75,8 +75,8 @@ html(lang='en')
     .textareamodal
       .textareamodal-dialog
         .textareamodal-dialog-inner
-          h3 データを確認
-          textarea.textareamodal-dialog-textarea.
+          h3.textareamodal-dialog-title データを確認
+          textarea.textareamodal-dialog-textarea(readonly).
             ダウンロードデータをここに表示します。
             ダウンロードデータをここに表示します。
             ダウンロードデータをここに表示します。
@@ -85,7 +85,7 @@ html(lang='en')
           a.btn(href='#')
             span キャンセル
         .textareamodal-dialog-close
-          span.close 閉じる
+          a 閉じる
 
 
     :html
@@ -94,14 +94,14 @@ html(lang='en')
       <script src="./resources/js/window/layout.js"></script>
       <style>
       .textareamodal{
-      position: fixed;
-      z-index: 1060;
-      width:100%;
-      height:100%;
-      background: rgba(0,0,0, .7);
-      top: 0;
-      left: 0;
-      display: none;
+        position: fixed;
+        z-index: 1060;
+        width:100%;
+        height:100%;
+        background: rgba(0,0,0, .7);
+        top: 0;
+        left: 0;
+        display: none;
       }
       .textareamodal-dialog{
         background: rgba(255,255,255, 1);
@@ -119,11 +119,22 @@ html(lang='en')
         width:100%;
         height:310px;
         resize: none;
+        line-height: 1.2;
+        font-size: 12px;
+        padding: 4px;
       }
       .textareamodal-dialog-close{
         position: absolute;
         top: 20px;
         right: 20px;
+      }
+      .textareamodal-dialog-close a{
+        color:#148fcc;
+      }
+      .textareamodal-dialog-title{
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 0 18px;
       }
       </style>
   
