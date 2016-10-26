@@ -229,9 +229,11 @@ a.btn{
     border-bottom-left-radius: 0;
     box-shadow:none;
     margin: 0 0 0 10px;
+    background:none;
 }
 .c-tab a.btn span{
     position:relative;
+    color: #148fcc;
 }
 .c-tab a.btn span:before{
     content:".";
